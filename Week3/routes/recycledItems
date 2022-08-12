@@ -1,0 +1,70 @@
+const express = require('express');
+const recycledItemsRoute = express.Router()
+const { v4: uuid } = require('uuid');
+
+// recycled item array
+let recycledItems = [
+    {
+        Name: 'Bottles',
+        Description: 'Plastic or metal',
+        Recyclable: 'yes',
+        Quantity: 10,
+        PricePerUnit: 20,
+        _id: uuid(),
+    },{
+        item: "Finish laundry",
+        priority: "no",
+        finishTime: "Sunday",
+        _id: uuid()
+    },
+    {
+        item: "Call Dr",
+        priority: "yes",
+        finishTime: "Wednesday",
+        _id: uuid()
+    },
+    { item: "Paper", description: "Used paper, yellow", recyclable: "yes", pricePerUnit: "$0.25", _id: uuid() },
+    { item: "Cardborad", description: "Small boxes", recyclable: "yes", pricePerUnit: "$0.25", _id: uuid() },
+    { item: "Glass", description: "Wine bottles", recyclable: "yes", pricePerUnit: "$0.75", _id: uuid() },
+
+
+    ]
+
+
+
+// Get-All
+// This will listen for:
+//GET- http://localhost:3000/recycleditems
+recycledItemsRoute.get('/', (req, res) => {
+    res.send(recycledItems)
+})
+
+//Get one by Id
+recycledItemsRoute.get('/:ItemsId', (req, res) => {
+    const itemId = req.params.itemId;
+    const oneItem = recycledItems.find(item => item._id === itemId);
+
+    res.send(oneItem);
+
+})
+
+// This will add a new recycled item
+recycledItemsRoute.post('/recycledItems', (req, res) => {
+    const newItem = req.body;
+    newItem._id = uuidv4();
+    recycledItems.push(newItem);
+    res.send(`Item ${newItem.Name} successfully added`);
+})
+
+// This deletes one item based on id
+recycledItemsRoute.delete('/:bookId', (req, res) => {
+    const recycledItemsId = req.params.recycledItemsId;
+    const recycleIndex = recycledItems.findIndex(item => item._id === recycledItemsId);
+    recycledItems.splice(recycleIndex, 1);
+    res.send("Item has been deleted")
+})
+
+
+
+//this updates one item based on id
+//recycledItems.put()
