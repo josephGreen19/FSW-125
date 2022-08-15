@@ -1,20 +1,12 @@
 const express = require('express');
-const app = express()
-const { v4: uuid } = require('uuid');
-const PORT = 3000
-const recycledItemsRoute= require ('./routes/recycledItems')
+const app = express();
+const { v4: uuidv4} = ('uuid');
+const recycledRouter = require('./routes/recycledRouter');
+const PORT = 3000;
 
-
-// Middleware
-app.use(express.json())
-app.use('/recycledItems', recycledItemsRoute)
-
-// app.use('/', routes);
-// app.use(app.router);
-// routes.initialize(app);
-
-
-
+//Middleware
+app.use(express.json());
+app.use('/recycledItems', recycledRouter)
 
 
 
