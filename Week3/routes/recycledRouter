@@ -7,7 +7,7 @@ const router = express.Router();
 let recycledItems = [
     { item: 'Bottles', description: 'Plastic or metal', recyclable: 'yes', quantity: 10, pricePerUnit: 20, _id: uuidv4()},
     { item: "Paper", description: "Used paper, yellow", recyclable: "yes", pricePerUnit: "$0.25", _id: uuidv4() },
-    { item: "Cardborad", description: "Small boxes", recyclable: "yes", pricePerUnit: "$0.25", _id: uuidv4() },
+    { item: "Cardboard", description: "Small boxes", recyclable: "yes", pricePerUnit: "$0.25", _id: uuidv4() },
     { item: "Glass", description: "Wine bottles", recyclable: "yes", pricePerUnit: "$0.75", _id: uuidv4() },
     ]
 // // Get-All
